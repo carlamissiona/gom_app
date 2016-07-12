@@ -1,0 +1,432 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<title>RhoElements Scroll Demo</title>
+<script type="text/javascript" src="/public/js/jquery-1.6.4.min.js"></script>
+<script>
+$(window).load(function() {setTimeout(function() {
+  $('a, img').live('mousedown', function(e) {
+    e.preventDefault();
+  });
+  
+  $('header a.button').click(function(e) {
+    event.preventDefault();
+  });
+    
+  //------------------- scroll begin ------------------------
+  $(".scrollable").each(nlt.scrollable.init);
+  //------------------- scroll end --------------------------
+  
+}, 100)});
+
+var nlt = {
+  scrollable: {
+    init: function(e) {
+      $(this).children().size() > 0 ? $(this).children().wrapAll('<a/>') : $(this).append('<a/>');
+    
+      $(this).children(":first-child").css('top', 0);
+      $(this).children(":first-child").get(0).addEventListener('mousedown', nlt.scrollable.__down, false);
+      $(this).children(":first-child").get(0).addEventListener('mousemove', nlt.scrollable.__move, false);
+      window.addEventListener('mouseup', nlt.scrollable.__up, false);
+      window.addEventListener('resize', nlt.scrollable.__resize, false);
+      
+      $(this).append("<span class=\"sb_scroll\"><span class=\"sb_bar\"></span></span>");
+      $(this).each(nlt.scrollable.resize);
+    },
+    
+    resize: function() {
+      if ($(this).children(":first-child").size() == 0) {
+        return;
+      }
+      
+      var h = nlt.scrollable.__ratio = $(this).innerHeight() / $(this).children(":first-child").innerHeight();
+      var t = Math.min(Math.max(parseInt($(this).children(":first-child").get(0).style.top), $(this).innerHeight() - $(this).children(":first-child").innerHeight()), 0);
+      $(this).children(":first-child").get(0).style.top = t + 'px';
+      if (h < 1.0) {
+        $(this).find(".sb_bar").show().css('top', -t * nlt.scrollable.__ratio).get(0).style.height = Math.ceil($(this).get(0).clientHeight * h) + 'px';
+      }
+      else {
+        $(this).find(".sb_bar").hide();
+      }
+    },
+    
+    reset: function() {
+      $(this).children(":first-child").get(0).style.top = '0px';
+      $(this).each(nlt.scrollable.resize);
+    },
+    
+    __offset: 0,
+    __limit: 0,
+    __self: null,
+    __ratio: 0.0,
+    
+    __down: function (e) {
+      //e.stopPropagation();
+      
+      nlt.scrollable.__offset = e.pageY - parseInt(e.currentTarget.style.top);
+      nlt.scrollable.__limit = Math.min(0, $(e.currentTarget).parent().height() - $(e.currentTarget).height());
+      nlt.scrollable.__self = e.currentTarget;
+      
+      nlt.scrollable.__ratio = $(e.currentTarget).parent().innerHeight() / $(e.currentTarget).innerHeight();
+    },
+    
+    __move: function (e) {
+      //e.preventDefault();
+      //e.stopPropagation();
+      
+      if (nlt.scrollable.__self) {
+        var t = Math.max(nlt.scrollable.__limit, Math.min(0, (e.pageY - nlt.scrollable.__offset)))
+        e.currentTarget.style.top = t + 'px';
+        $(e.currentTarget.parentNode).find(".sb_bar").css('top', -t * nlt.scrollable.__ratio);
+      }
+    },
+    
+    __up: function (e) {    
+      nlt.scrollable.__self = null;
+    },
+    
+    __resize: function() {
+      $(".scrollable").each(nlt.scrollable.resize);
+    }
+  },
+  
+}
+
+
+
+
+
+</script>
+
+
+
+<style>
+@charset "utf-8";
+
+
+  
+    
+
+</style>
+
+
+
+</head>
+<body>
+<div id="wrapper">
+  <header><h1><a href="#" id="title" class="button nowrap"><span>RhoElements Scroll Demo</span></a></h1></header>
+  <div id="content" class="scrollable">
+    <div data-role="page" data-url="<%= Rho::RhoConfig.start_path %>read">
+    
+      <div data-role="header" data-position="inline">
+        
+    
+        <style>
+        
+        
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    
+    html {
+      height: 100%;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-box-align: stretch;
+    }
+    
+    body {
+      color: #fff;
+      -webkit-user-select: none;
+      font-family: 'UniversCondensed';
+      font-weight: normal;  
+      background-color: #000;
+      border: 5px dotted #000;
+      -webkit-box-flex: 1;  
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-box-align: stretch;  
+      font-size: 14pt;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      text-transform: uppercase;
+    
+    }
+    
+    
+    #wrapper {
+      -webkit-box-flex: 1;
+      
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-box-align: stretch;
+    }
+    
+    a.button {
+      background: url(../res/ar.png) no-repeat right 0px;
+      background-size: 1.65em;
+      padding: 0.2em 1.0em 0.2em 0.2em;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 200%;
+      position: relative;
+      left: 0;
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      background-color: #666;
+      overflow: hidden;
+      
+      display: -webkit-box;
+      -webkit-box-orient: horizontal;
+      -webkit-box-align: stretch;
+    }
+    
+    a.button.fixed {
+      position: fixed;
+      left: 5px;
+      z-index: 2;
+    }
+    
+    a.button.selected {
+      background: url(../res/al.png) no-repeat right 0px;
+      background-size: 1.65em;
+      background-color: #666;
+    }
+    
+    footer h2 {
+      background-color: #ccc;
+      padding-left: 3px;
+    }
+    
+    header h1 {
+      margin: 0;
+      font-size: 100%;
+    }
+    
+    
+    header a.button {
+      background: url(../res/m.png) no-repeat -1.7em 0 #f68b1f;
+      background-size: 1.65em;
+      border-bottom: none;
+      border-left: 1.7em solid transparent;
+      border-right: 0.2em solid transparent;
+      padding: 0.2em 0;
+    }
+    
+    header a.button.nowrap {
+      white-space: nowrap;
+    }
+    
+    header a.button.nowrap span {
+      width: 100%;
+      overflow: hidden;
+      display: block;
+      text-overflow: ellipsis;
+    }
+    
+    header a.button.nowrap:active span {
+      width: auto;
+      
+      -webkit-animation: scroll 4s;
+      -webkit-animation-timing-function: linear;
+      position: relative;
+    }
+    @-webkit-keyframes scroll {
+      from {left: 0%;}
+      to {left: -102%;}
+    }
+    
+    
+    #content {  
+      -webkit-box-flex: 1;
+      position: relative;
+      border-top: 5px solid #000;
+      
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-box-align: stretch;
+      height: 100%;
+      width: 100%;
+    }
+    
+    .scrollable {
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .scrollable > *:first-child {
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .sb_scroll {
+      position: absolute;
+      height: 100%;
+      display: block;
+      width: 5px;
+      top: 0;
+      right: 0;
+      z-index: 98;
+    }
+    
+    .sb_bar {
+      position: absolute;
+      display: block;
+      width: 100%;
+      background: orange;
+      top: 0;
+      left: 0;
+      z-index: 99;
+    }
+
+        p, div {margin:0;padding:0;}
+        body {background-color:#eee8aa; }
+        #containbox{
+              position:absolute;
+              top:0%;
+              left:0%;
+              height:100%;
+              width:100%;
+              background-color:#eee8aa;
+              overflow-y:scroll;
+              -webkit-overflow-scrolling:touch;
+          }
+          
+          
+           #middle{
+              position:absolute;
+              height:30%;
+              width:100%;
+              top:0%;
+              color:lightblue;
+              font-family:type-b;
+              font-size:x-large;
+              text-align:center;
+              background:url('/public/images/subtle_dots.png');
+              }
+                   
+                  #mid-ribbon p {
+                    font-family:type-b;
+                    font-size:xx-large;
+                    color:black;
+                    padding-top:8%;
+                    text-align:center;
+                   }
+              
+              
+            .text-wrap{
+              position:absolute;
+              width:84%;
+              height:110%;
+              left:6%;
+              top:18%;
+              background-color:white;
+              -webkit-box-shadow: 0px 0px 0px 1px #f0f0f0;
+              padding-left:4%;
+              padding-top:5%;
+              padding-bottom:5%;
+              margin-right:3%;
+              margin-bottom:2%;   
+              
+             
+            }
+            
+            @font-face{
+                 font-family: type-b;
+                 src: url(/public/css/JennaSue.ttf);
+    
+              }
+              
+            @font-face{
+                 font-family: type-z;
+                 src: url(/public/css/arsenal.otf);
+               
+             }
+              #text{
+                position:absolute;
+                height:100%;
+                max-height:100%;
+               
+                -webkit-column-width:250px;
+                -webkit-column-count:10;
+                -webkit-column-gap:50px;
+                padding:3% 2% 4% 2%;
+                
+                margin-right:3%;
+                margin-bottom:3%;
+                
+                font-family:type-z;
+                color:black;
+                font-size:85%;
+                line-height:160%;
+                overflow-x:scroll;
+                overflow-y:hidden;
+                -webkit-overflow-scrolling:touch;
+              }
+          
+              #text p {bottom:3%;}      
+                
+        </style>
+        
+        
+      </div>
+     
+      <div data-role="content">
+      
+             
+    <h1></h1>
+                  <!--- Make  content div scrollable  --->   
+          <div id="containbox">
+           
+              <div id="middle">
+               
+                   <h3><%= @artc.title %></h3>
+              
+    
+              </div>
+              
+             
+              <div class="text-wrap">
+              
+                  <div id="text">
+                    <p>
+                        <%= @artc.content %>
+                    </p>
+                    </br>
+                  </div>
+    
+    
+    
+                    
+              </div>
+    
+          
+              
+          <!-- = = = = = = = = =  E N D O F C O N T A I N E R = = = = = = = -->   
+          </div>  <!-- endcontain  -->
+
+
+
+    
+    
+          
+           
+    
+      </div>
+    
+    </div>
+      
+    
+  </div>
+  
+  <div><footer><h2><span>Footer</span></a></h2></footer></div>
+  
+  
+</div>
+</body>
+</html>

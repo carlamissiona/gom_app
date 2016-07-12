@@ -1,0 +1,166 @@
+@charset "utf-8";
+
+html, body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+html {
+	height: 100%;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-align: stretch;
+}
+
+body {
+	color: #fff;
+	-webkit-user-select: none;
+	font-family: 'UniversCondensed';
+	font-weight: normal;
+	
+	background-color: #000;
+	border: 5px dotted #000;
+	-webkit-box-flex: 1;
+	
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-align: stretch;
+	
+	font-size: 14pt;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-transform: uppercase;
+	font-family: 'UniversBoldCondensed';
+}
+
+
+#wrapper {
+	-webkit-box-flex: 1;
+	
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-align: stretch;
+}
+
+a.button {
+	background: url(../res/ar.png) no-repeat right 0px;
+	background-size: 1.65em;
+	padding: 0.2em 1.0em 0.2em 0.2em;
+	text-transform: uppercase;
+	font-family: 'UniversBoldCondensed';
+	font-weight: bold;
+	font-size: 200%;
+	position: relative;
+	left: 0;
+	display: block;
+	color: #fff;
+	text-decoration: none;
+	background-color: #666;
+	overflow: hidden;
+	
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-align: stretch;
+}
+
+a.button.fixed {
+	position: fixed;
+	left: 5px;
+	z-index: 2;
+}
+
+a.button.selected {
+	background: url(../res/al.png) no-repeat right 0px;
+	background-size: 1.65em;
+	background-color: #666;
+}
+
+footer h2 {
+	background-color: #ccc;
+	padding-left: 3px;
+}
+
+header h1 {
+	margin: 0;
+	font-size: 100%;
+}
+
+
+header a.button {
+	background: url(../res/m.png) no-repeat -1.7em 0 #f68b1f;
+	background-size: 1.65em;
+	border-bottom: none;
+	border-left: 1.7em solid transparent;
+	border-right: 0.2em solid transparent;
+	padding: 0.2em 0;
+}
+
+header a.button.nowrap {
+	white-space: nowrap;
+}
+
+header a.button.nowrap span {
+	width: 100%;
+	overflow: hidden;
+	display: block;
+	text-overflow: ellipsis;
+}
+
+header a.button.nowrap:active span {
+	width: auto;
+	
+	-webkit-animation: scroll 4s;
+	-webkit-animation-timing-function: linear;
+	position: relative;
+}
+@-webkit-keyframes scroll {
+	from {left: 0%;}
+	to {left: -102%;}
+}
+
+
+#contents {	
+	-webkit-box-flex: 2;
+	position: relative;
+	border-top: 5px solid #000;
+	
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-align: stretch;
+	height: 100%;
+	width: 100%;
+}
+
+.scrollable {
+	overflow: hidden;
+	position: relative;
+}
+
+.scrollable > *:first-child {
+	display: block;
+	position: relative;
+	overflow: hidden;
+}
+
+.sb_scroll {
+	position: absolute;
+	height: 100%;
+	display: block;
+	width: 5px;
+	top: 0;
+	right: 0;
+	z-index: 98;
+}
+
+.sb_bar {
+	position: absolute;
+	display: block;
+	width: 100%;
+	background: orange;
+	top: 0;
+	left: 0;
+	z-index: 99;
+}
+

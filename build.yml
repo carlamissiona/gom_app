@@ -1,0 +1,35 @@
+#sdk: "C:/MotorolaRhoMobileSuite2.1.1.7/ruby/lib/ruby/gems/1.9.1/gems/rhodes-3.4.2"
+sdkversion: "3.4.0"
+name: "Product"
+version: 1.0
+vendor: "rhomobile"
+build: "debug"
+bbver: 4.6
+applog: "rholog.txt"
+iphone:
+  configuration: "Release"
+  sdk: "iphonesimulator5.0"
+  provisionprofile: 
+  codesignidentity: 
+  entitlements: 
+  BundleIdentifier: "com.rhomobile.product"
+  BundleURLScheme: "product"
+wp:
+  productid: "42841950-9ba6-0130-9190-00e0b101ceaf"
+symbian:
+  uid: "0xe8da68d5"
+android:
+  minSDK: 14
+  orientation: "portrait"
+  version: "4.0.3"
+  production:
+    certificate: "C:/Users/Pisonet-White/Documents/sdk/keys/keylit.keystore"
+    password: "polarbear"
+    alias: "litkey"
+extensions:
+  - json
+  - another-extension
+capabilities:
+  - phone
+  - non_motorola_device
+  - native_browser

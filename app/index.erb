@@ -1,0 +1,263 @@
+<html>
+
+
+  <head>
+    <h1>CuteOnly</h1>
+ 
+    
+    <style>
+      
+          
+          /**   new css  **/
+          div, ul, li, p  {
+            margin:0;
+            padding:0;
+          
+          }
+          
+          ul{
+                    list-style-type:none;
+                   
+                  }
+          .containbox{
+              height:100%;
+              width:100%;
+              max-width:100%;
+              
+              overflow:hidden;
+           
+          
+          }
+          .top{
+              position:absolute;
+              top:0%;
+              left:0%;
+              width:100%;
+              height:5%;     
+              min-height: 30px;
+              background:url('/public/images/subtle_dots.png');
+        
+         
+           }   
+          
+          .midbox{
+            
+              position:absolute;
+              top:0%;
+              left:0%;
+              height:70%;
+              width:100%;
+              background-color:#eee8aa;
+              z-index:100;
+                         
+            }
+          
+          .botmbox{            
+          
+               position:absolute;
+               top:70%;
+               left:0%;
+               height:30%;
+               width:100%;
+               background:url('/public/images/subtle_dots.png');
+               overflow:hidden;
+               z-index:80;
+                
+           }
+          #circle{
+                       position:absolute;
+                       bottom:-5%;
+                       left:-40%;
+                       width: 400px;
+                       height: 400px;
+                       //background-color:#eee8aa;
+                     
+                       margin-top:15%;
+                       -webkit-border-radius: 400px;
+                       border-radius: 400px;
+                       z-index:85;
+                       
+                       
+animation:myfirst 5s;
+-webkit-animation:myfirst 5s; /* Safari and Chrome */
+}
+
+@keyframes myfirst
+{
+0%   {background:url('/public/images/a.jpg')}
+25%  {background:url('/public/images/b.jpg')}
+50%  {background:url('/public/images/c.jpg')}
+100% {background:url('/public/images/a.jpg')}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+0%   {background:url('/public/images/a.jpg')}
+25%  {background:url('/public/images/c.jpg')}
+50%  {background:url('/public/images/b.jpg')}
+100% {background:url('/public/images/a.jpg')}
+}
+           #quotebox{
+                position:absolute;
+                width:80%;
+                bottom:25%;
+                height:65%;
+                left:10%;
+                background-color:#eee8aa;
+                border-radius:16px;
+           }  
+           
+           #quotebox ul{
+                position:inherit;
+                height:88%;
+                width:100%;
+                margin-top:25%;
+               
+                padding:0%;
+                background:url('/public/images/subtle_dots.png');
+                
+                border-left: 1px solid lightgray;
+                border-bottom: 1px solid lightgray;
+                           
+           }     
+           
+           #title{
+            position:inherit;
+            top:3%;
+            right:5%;
+            width:130px;
+            height:20%;
+            background:white;
+         }
+            #title p{
+              position:inherit;
+              left:20%;
+              right:20%;
+              top:23%;
+              line-height:25px;
+              color:black;
+            
+            }
+            
+            #icon{
+               
+               position:inherit;
+               width:30%;
+               top:10%;
+               left:10%;
+             
+            }
+        
+             
+              
+            #menu{
+              
+            position:absolute;
+            right:8%%;
+            top:0;
+            width:45% ;
+            height:100%; 
+                       }
+           
+           #menu ul{
+                position:inherit;
+                top:3%;
+                margin-top:10%;
+                display:inline;}
+           #menu li {
+           
+            display:inline-block;
+            margin-right:17%;
+            height:25%;
+        
+            z-index:90;  
+            list-style-type:none;
+            
+           
+           } 
+           #menu p{
+            line-height:30px;
+            height:30%;
+            text-align:center;
+           }
+            #menu li:hover{
+             background-color:white;
+           
+           } 
+          
+       
+         .typo-c{
+           margin:80% 15% 0 4%;      
+           font-family:type-b;
+           font-size:280%;
+           color:white;
+            
+         }
+         .typo-small{
+         
+           font-size:50%;
+         }
+           @font-face        {
+              font-family: type-a;
+              
+              src: url(/public/css/Intro.otf);
+           }
+           @font-face        {
+              font-family: type-b;
+              src: url(/public/css/JennaSue.ttf);
+           }
+           @font-face        {
+              font-family: type-c;
+              src: url(/public/css/Dubiel.ttf);
+           }
+    </style>
+    
+    
+  </head>
+
+  <div data-role="content">
+  
+        
+  
+      <div class="containbox">
+          
+         
+          <div class="midbox">
+             
+              <div id ="title">
+                  <p>Gospel Reminder</p> 
+              </div>
+              
+              
+             <p class="typo-c">
+                 the Gospel for all smartphones </p>
+             
+          
+          </div>
+          <div class="botmbox">
+              
+                         
+              <div id="menu">
+               
+
+                    <ul data-role="listview">
+                        <li><a href="<%= url_for :controller => :Article, :action => :toc  %>" > R e a d </a></li>
+                        <li><a href="#"> S u p p o r t </a> </li>
+                        <li><a href="#"> C r e d i t s </a> </li>
+                        
+                  </ul>
+              
+              </div>
+            
+                            
+          </div>
+          
+         
+      </div>  <!-- endcontain  -->
+  
+      
+  
+  </div>
+
+
+</html>

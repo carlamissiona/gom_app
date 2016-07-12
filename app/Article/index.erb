@@ -1,0 +1,171 @@
+<html>
+<head>
+
+</head>
+<div data-role="page" data-url="<%= Rho::RhoConfig.start_path %>/">
+  <div data-role="header" data-position="inline">
+    <h1>Product</h1>
+ 
+    
+    <style>
+      
+          body{ overflow-y :hidden;}
+          /**   new css  **/
+          div, ul, li, p  {
+            margin:0;
+            padding:0;  
+
+          }
+          
+          
+         #top{
+            position:absolute;
+            top:0%;
+            left:0%;
+            width:100%;
+            height:63%;
+            background-color:#eee8aa;
+            z-index:50;
+         }
+         
+         #title {
+           position:absolute;
+           width:25%;
+           min-width:100px ;
+           height:25%;
+           top:0%;
+           right:8%;
+           background-color:white;
+           color:black;
+           font-size:large;
+         }
+         #title_text{
+            position:absolute;
+            left:18%;
+            top:28%;
+            text-align:center;
+          
+         }
+            
+         #bott{
+            position:absolute;
+            top:63%;
+            left:0%;
+            height:37%;
+            width:100%;
+            background:url('/public/images/subtle_dots.png');
+            
+         }  
+          .typo{
+           
+           position: absolute ; 
+           left:15%;
+           bottom:15%;
+           margin:80% 15% 0 4%;      
+           font-family:type-b;
+           font-size:350%;
+           color:black;
+           z-index:100;
+          
+         }
+         .typo-small{
+         
+           font-size:50%;
+         }
+           @font-face        {
+              font-family: type-a;              
+              src: url(/public/css/Intro.otf);
+           }
+           @font-face        {
+              font-family: type-b;
+              src: url(/public/css/JennaSue.ttf);
+           }
+           @font-face        {
+              font-family: type-c;
+              src: url(/public/css/Dubiel.ttf);
+           }
+           
+           
+           h1{
+            color:white;
+           }
+           
+           
+           .menu_icon{     
+              position:absolute;
+              bottom:-2%;
+              height:70%;
+              width:100%;
+             
+              
+           }
+           
+            .icons{
+               float:left;
+               width:13%;
+               height:13%;
+               max-height:80px;
+               max-width: 70px;
+               margin-left:18%;
+               margin-top:5%;
+               margin-bottom:50%;
+                        
+            
+            
+            }
+             .iconimg{
+               
+               height:80px;
+               width: 70px; 
+               min-height:50px;
+               min-width: 30px;
+               }
+         
+           
+    </style>
+    
+  </div>
+
+  <div data-role="content";>
+  
+        
+
+              <div id='top'>
+                <div id="title"> <p id="title_text">Gospel<br/> Notes</p></div>
+                <div><p class="typo">Grace on the Marqee </p> </div>
+              </div>
+              
+             
+              
+              <div id='bott'>
+                  
+                  <div id="menu">
+                         
+                        
+                        <div class="menu_icon">
+
+                                <div class="icons"> 
+                                    <a href="<%= url_for  :action => :toc  %>"><img class="iconimg" src="/public/images/ico_file.png">
+                                    </a> 
+                                                 
+                                </div>
+                                 
+                                <div class="icons">   
+                                    <a href="sms:+09238370593?<%= @sending %>"><img class="iconimg" src="/public/images/ico_msg.png" ></a>
+                                </div>
+
+                        </div>
+                    
+                        
+                                                                      
+             
+              
+                   </div>
+    
+              </div>
+      
+  
+  </div>
+
+</div>
+</html>
